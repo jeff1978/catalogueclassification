@@ -11,7 +11,9 @@ var mongoose = require('mongoose'),
 var CategorySchema = new Schema({
   categoryName: {
     type: String,
-    trim: true } });
+    trim: true,
+    unique: true,
+    required: 'Category name cannot be blank.' } });
 
 CategorySchema.statics.seed = seed;
 

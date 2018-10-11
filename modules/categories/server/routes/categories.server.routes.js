@@ -18,6 +18,6 @@ module.exports = function (app) {
     .put(categories.update)
     .delete(categories.delete);
 
-  // Finish by binding the article middleware
+  // Finish by binding the category middleware
   app.param('categoryId', categories.categoryByID);
 };

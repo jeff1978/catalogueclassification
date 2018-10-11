@@ -135,6 +135,28 @@ module.exports = {
           categoryName: 'Books'
         }
       }]
+    }, {
+      model: 'Product',
+      options: {
+        // Override log results setting at the
+        // collection level.
+        logResults: true
+      },
+      skip: {
+        // Skip collection when this query returns results.
+        // e.g. {}: Only seeds collection when it is empty.
+        when: {} // Mongoose qualified query
+      },
+      docs: [{
+        overwrite: true,
+        data: {
+          productName: 'The Walking Dead',
+          productDescription: 'Season 3 Box Set',
+          productPrice: 30,
+          qtyInStock: 2
+          // qtyInStock: 'Books',
+        }
+      }]
     }]
   }
 };
