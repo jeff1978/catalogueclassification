@@ -134,6 +134,21 @@ module.exports = {
         data: {
           categoryName: 'Books'
         }
+      }, {
+        overwrite: true,
+        data: {
+          categoryName: 'Musical Instruments'
+        }
+      }, {
+        overwrite: true,
+        data: {
+          categoryName: 'Toys and Games'
+        }
+      }, {
+        overwrite: true,
+        data: {
+          categoryName: 'Electronics and CDs'
+        }
       }]
     }, {
       model: 'Product',
@@ -151,10 +166,40 @@ module.exports = {
         overwrite: true,
         data: {
           productName: 'The Walking Dead',
-          productDescription: 'Season 3 Box Set',
+          productDescription: 'Season 3 box set with booklet',
           productPrice: 30,
-          qtyInStock: 2
-          // qtyInStock: 'Books',
+          qtyInStock: 2,
+          productImgUrl: '/modules/products/client/img/products/twd.png'
+        }
+      },
+      {
+        overwrite: true,
+        data: {
+          productName: 'Saxophone',
+          productDescription: 'Jeffs old E flat alto with CD guide.',
+          productPrice: 200,
+          qtyInStock: 1,
+          productImgUrl: '/modules/products/client/img/products/sax.png'
+        }
+      },
+      {
+        overwrite: true,
+        data: {
+          productName: 'Audio Book',
+          productDescription: 'This book read by someone famous',
+          productPrice: 15,
+          qtyInStock: 12,
+          productImgUrl: '/modules/products/client/img/products/book.png'
+        }
+      },
+      {
+        overwrite: true,
+        data: {
+          productName: 'Rubix Cube',
+          productDescription: 'Very easy to solve. Buy one for a friend today!',
+          productPrice: 7,
+          qtyInStock: 3,
+          productImgUrl: '/modules/products/client/img/products/rubix.png'
         }
       }]
     }]

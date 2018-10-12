@@ -79,7 +79,7 @@ exports.delete = function (req, res) {
  * List of Products
  */
 exports.list = function (req, res) {
-  Product.find().exec(function (err, products) {
+  Product.find().populate({ path: 'productCategories' }).exec(function (err, products) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)

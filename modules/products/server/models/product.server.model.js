@@ -28,7 +28,7 @@ var ProductSchema = new Schema({
     required: 'Product description cannot be blank' },
   productImgUrl: {
     type: String,
-    default: '/modules/products/client/img/profile/default.png' },
+    default: '/modules/products/client/img/products/default.png' },
   productPrice: {
     type: Number,
     trim: true,
