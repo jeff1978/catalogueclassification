@@ -1,14 +1,14 @@
 (function () {
   'use strict';
 
-  describe('Categories List Controller Tests', function () {
+  describe('Products List Controller Tests', function () {
     // Initialize global variables
-    var CategoriesListController,
+    var ProductsListController,
       $scope,
       $httpBackend,
       $state,
-      CategoriesService,
-      mockCategory;
+      ProductsService,
+      mockProduct;
 
     // The $resource service augments the response object with methods for updating and deleting the resource.
     // If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
@@ -35,23 +35,28 @@
     // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
     // This allows us to inject a service but then attach it to a variable
     // with the same name as the service.
-    beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _CategoriesService_) {
+    beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _ProductsService_) {
       // Set a new global scope
       $scope = $rootScope.$new();
 
       // Point global variables to injected services
       $httpBackend = _$httpBackend_;
       $state = _$state_;
-      CategoriesService = _CategoriesService_;
+      ProductsService = _ProductsService_;
 
       // create mock article
-      mockCategory = new CategoriesService({
+      mockProduct = new ProductsService({
         _id: '525a8422f6d0f87f0e407a33',
-        categoryName: 'A MEAN category'
+        productName: 'A MEAN product',
+        productDescription: '....really MEAN.',
+        productImgUrl: 'some/url',
+        productPrice: 2,
+        qtyInStock: 4,
+        productCategories: []
       });
 
-      // Initialize the Categories List controller.
-      CategoriesListController = $controller('CategoriesListController as vm', {
+      // Initialize the Products List controller.
+      ProductsListController = $controller('ProductsListController as vm', {
         $scope: $scope
       });
 
@@ -60,15 +65,15 @@
     }));
 
     describe('Instantiate', function () {
-      var mockCategoryList;
+      var mockProductList;
 
       beforeEach(function () {
-        mockCategoryList = [mockCategory, mockCategory];
+        mockProductList = [mockProduct, mockProduct];
       });
 
-      it('should send a GET request and return all categories', inject(function (CategoriesService) {
+      it('should send a GET request and return all products', inject(function (ProductsService) {
         // Set POST response
-        $httpBackend.expectGET('/api/categories').respond(mockCategoryList);
+        $httpBackend.expectGET('/api/products').respond(mockProductList);
 
         // Ignore parent template get on state transition
         $httpBackend.whenGET('/modules/core/client/views/home.client.view.html').respond(200, '');
@@ -76,9 +81,9 @@
         $httpBackend.flush();
 
         // Test form inputs are reset
-        expect($scope.vm.categories.length).toEqual(2);
-        expect($scope.vm.categories[0]).toEqual(mockCategory);
-        expect($scope.vm.categories[1]).toEqual(mockCategory);
+        expect($scope.vm.products.length).toEqual(2);
+        expect($scope.vm.products[0]).toEqual(mockProduct);
+        expect($scope.vm.products[1]).toEqual(mockProduct);
 
       }));
     });

@@ -1,14 +1,14 @@
 (function () {
   'use strict';
 
-  describe('Categories Controller Tests', function () {
+  describe('Products Controller Tests', function () {
     // Initialize global variables
-    var CategoriesController,
+    var ProductsController,
       $scope,
       $httpBackend,
       $state,
-      CategoriesService,
-      mockCategory;
+      ProductsService,
+      mockProduct;
 
     // The $resource service augments the response object with methods for updating and deleting the resource.
     // If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
@@ -35,25 +35,30 @@
     // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
     // This allows us to inject a service but then attach it to a variable
     // with the same name as the service.
-    beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _CategoriesService_) {
+    beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _ProductsService_) {
       // Set a new global scope
       $scope = $rootScope.$new();
 
       // Point global variables to injected services
       $httpBackend = _$httpBackend_;
       $state = _$state_;
-      CategoriesService = _CategoriesService_;
+      ProductsService = _ProductsService_;
 
-      // create mock category
-      mockCategory = new CategoriesService({
+      // create mock product
+      mockProduct = new ProductsService({
         _id: '525a8422f6d0f87f0e407a33',
-        categoryName: 'A MEAN category'
+        productName: 'A MEAN product',
+        productDescription: '....really MEAN.',
+        productImgUrl: 'some/url',
+        productPrice: 2,
+        qtyInStock: 4,
+        productCategories: []
       });
 
-      // Initialize the Categories controller.
-      CategoriesController = $controller('CategoriesController as vm', {
+      // Initialize the Products controller.
+      ProductsController = $controller('ProductsController as vm', {
         $scope: $scope,
-        categoryResolve: {}
+        productResolve: {}
       });
 
       // Spy on state go

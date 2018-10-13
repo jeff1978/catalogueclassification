@@ -1,10 +1,10 @@
 (function () {
   'use strict';
 
-  describe('Categories Route Tests', function () {
+  describe('Products Route Tests', function () {
     // Initialize global variables
     var $scope,
-      CategoriesService;
+      ProductsService;
 
     // We can start by loading the main application module
     beforeEach(module(ApplicationConfiguration.applicationModuleName));
@@ -12,21 +12,21 @@
     // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
     // This allows us to inject a service but then attach it to a variable
     // with the same name as the service.
-    beforeEach(inject(function ($rootScope, _CategoriesService_) {
+    beforeEach(inject(function ($rootScope, _ProductsService_) {
       // Set a new global scope
       $scope = $rootScope.$new();
-      CategoriesService = _CategoriesService_;
+      ProductsService = _ProductsService_;
     }));
 
     describe('Route Config', function () {
       describe('Main Route', function () {
         var mainstate;
         beforeEach(inject(function ($state) {
-          mainstate = $state.get('categories');
+          mainstate = $state.get('products');
         }));
 
         it('Should have the correct URL', function () {
-          expect(mainstate.url).toEqual('/categories');
+          expect(mainstate.url).toEqual('/products');
         });
 
         it('Should be abstract', function () {
@@ -41,7 +41,7 @@
       describe('List Route', function () {
         var liststate;
         beforeEach(inject(function ($state) {
-          liststate = $state.get('categories.list');
+          liststate = $state.get('products.list');
         }));
 
         it('Should have the correct URL', function () {
@@ -53,24 +53,24 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(liststate.templateUrl).toBe('/modules/categories/client/views/list-categories.client.view.html');
+          expect(liststate.templateUrl).toBe('/modules/products/client/views/list-products.client.view.html');
         });
       });
 
       describe('Handle Trailing Slash', function () {
         beforeEach(inject(function ($state, $rootScope, $templateCache) {
-          $templateCache.put('/modules/categories/client/views/list-categories.client.view.html', '');
+          $templateCache.put('/modules/products/client/views/list-products.client.view.html', '');
 
-          $state.go('categories.list');
+          $state.go('products.list');
           $rootScope.$digest();
         }));
 
         it('Should remove trailing slash', inject(function ($state, $location, $rootScope) {
-          $location.path('categories/');
+          $location.path('products/');
           $rootScope.$digest();
 
-          expect($location.path()).toBe('/categories');
-          expect($state.current.templateUrl).toBe('/modules/categories/client/views/list-categories.client.view.html');
+          expect($location.path()).toBe('/products');
+          expect($state.current.templateUrl).toBe('/modules/products/client/views/list-products.client.view.html');
         }));
       });
     });
