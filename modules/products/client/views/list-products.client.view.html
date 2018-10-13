@@ -1,0 +1,18 @@
+﻿<section>
+  <div class="page-header">
+    <h1>
+      Products List
+      <a class="btn btn-primary pull-right" data-ui-sref="products.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="product in vm.products" data-ui-sref="products.edit({productId: product._id})" class="list-group-item">
+      <h4 class="list-group-item-heading" data-ng-bind="product.productName"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="vm.products.$resolved && !vm.products.length">
+    No products yet, why don't you <a data-ui-sref="products.create">create one</a>?
+  </div>
+</section>

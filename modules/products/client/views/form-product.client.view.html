@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.product._id ? 'Edit Product' : 'New Product'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a ng-show="vm.product._id" class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.productForm" class="form-horizontal" ng-submit="vm.save(vm.form.productForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Product Name</label>
+          <input name="name" type="text" ng-model="vm.product.productName" id="name" class="form-control" placeholder="New Product Name" required autofocus>
+          <div ng-messages="vm.form.productForm.productName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Product name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.product._id ? 'Update' : 'Create'}}</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
