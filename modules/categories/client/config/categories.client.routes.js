@@ -19,15 +19,29 @@
         templateUrl: '/modules/categories/client/views/list-categories.client.view.html',
         controller: 'CategoriesListController',
         controllerAs: 'vm'
-        // data: {
-        // roles: ['admin']
-        // }
-
-        // TODO
-        // add more states here
+      })
+      .state('categories.create', {
+        url: '/create',
+        templateUrl: '/modules/categories/client/views/form-category.client.view.html',
+        controller: 'CategoriesController',
+        controllerAs: 'vm',
+        resolve: {
+          categoryResolve: newCategory
+        }
+      })
+      .state('categories.edit', {
+        url: '/:categoryId/edit',
+        templateUrl: '/modules/categories/client/views/form-category.client.view.html',
+        controller: 'CategoriesController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: '{{ categoryResolve.categoryName }}'
+        },
+        resolve: {
+          categoryResolve: getCategory
+        }
 
       });
-
   }
 
 

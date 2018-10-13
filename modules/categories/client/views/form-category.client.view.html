@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.category._id ? 'Edit Category' : 'New Category'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a ng-show="vm.category._id" class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.categoryForm" class="form-horizontal" ng-submit="vm.save(vm.form.categoryForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Category Name</label>
+          <input name="name" type="text" ng-model="vm.category.categoryName" id="name" class="form-control" placeholder="New Category Name" required autofocus>
+          <div ng-messages="vm.form.categoryForm.categoryName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Category name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.category._id ? 'Update' : 'Create'}}</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
