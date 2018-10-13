@@ -1,6 +1,10 @@
 <section>
   <div class="page-header">
-    <h1>{{vm.product._id ? 'Edit Product' : 'New Product'}}</h1>
+    <h1>
+      <i ng-show="!vm.product._id" class="glyphicon glyphicon-plus-sign"></i>
+      <i ng-show="vm.product._id" class="glyphicon glyphicon-edit"></i>
+      {{vm.product._id ? 'Edit Product' : 'New Product'}}
+    </h1>
   </div>
   <div class="pull-right">
     <a ng-show="vm.product._id" class="btn btn-primary" ng-click="vm.remove()">
