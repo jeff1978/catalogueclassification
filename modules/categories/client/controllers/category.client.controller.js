@@ -12,8 +12,8 @@
 
     vm.category = category;
     vm.form = {};
-    vm.remove = remove;
     vm.save = save;
+    vm.remove = remove;
 
     // Remove existing Category
     function remove() {
@@ -43,7 +43,7 @@
       }
 
       function errorCallback(res) {
-        Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Article save error!' });
+        Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Category save error!' });
       }
     }
   }

@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Category = mongoose.model('Category'),
+  Product = mongoose.model('Product'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
@@ -54,12 +55,13 @@ exports.update = function (req, res) {
 };
 
 /**
- * Delete an category
+ * Delete a category
  */
 exports.delete = function (req, res) {
   var category = req.category;
 
   category.remove(function (err) {
+
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
