@@ -5,11 +5,21 @@
     .module('products')
     .controller('ProductsListController', ProductsListController);
 
-  ProductsListController.$inject = ['ProductsService'];
+  ProductsListController.$inject = ['$scope', '$filter', 'ProductsService'];
 
-  function ProductsListController(ProductsService) {
+  function ProductsListController($scope, $filter, ProductsService) {
     var vm = this;
 
-    vm.products = ProductsService.query();
+    ProductsService.query(function (data) {
+      vm.products = data;
+      // vm.figureOutItemsToDisplay();
+    });
+
+    // Filter logic for pipe, not ideal - should filter vm.products for best practice.
+    // TODO:
+    // Implement filtering not using pipe.
+    vm.searchFilter = function (row) {
+      return !!((row._id.indexOf(vm.search || '') !== -1 || row.productName.indexOf(vm.search || '') !== -1));
+    };
   }
 }());

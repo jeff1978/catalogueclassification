@@ -1,11 +1,20 @@
 ﻿<section>
+  </div>
   <div class="page-header">
-    <h1>
-      <i class="glyphicon glyphicon-list"></i> Products
+    <div class="row">
+      <div class="col-md-4">
+        <h1>
+          <i class="glyphicon glyphicon-list"></i> Products
+
+        </h1>
+      </div>
+      <div class="col-md-4" style="margin-top: 2em">
+        <input class="form-control col-md-4" type="text" ng-model="vm.search" placeholder="Search by Name or SKU only (case sensitive)" ng-change="vm.figureOutItemsToDisplay()" />
+      </div>
       <a class="btn btn-primary pull-right" data-ui-sref="products.create">
         <i class="glyphicon glyphicon-plus"></i>
       </a>
-    </h1>
+    </div>
   </div>
   <table style="table-layout: fixed; width:100%">
     <tr>
@@ -19,7 +28,7 @@
     <tr></tr>
   </table>
   <div class="list-group">
-    <a data-ng-repeat="product in vm.products" data-ui-sref="products.edit({productId: product._id})" class="list-group-item">
+    <a data-ng-repeat="product in vm.products | filter: vm.searchFilter " data-ui-sref="products.edit({productId: product._id})" class="list-group-item">
       <table style="table-layout: fixed; width:100%">
         <tr>
           <td>
