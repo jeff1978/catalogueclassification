@@ -37,7 +37,7 @@
       // foreach category, create an objectToBind.
       // set isSelected and category properties,
       // then return all in a list.
-      return dbSelectedCategories;
+      return allCategories;
     }
 
     function getSelectedCategories() {
