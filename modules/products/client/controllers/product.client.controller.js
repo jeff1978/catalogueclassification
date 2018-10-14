@@ -5,11 +5,12 @@
     .module('products')
     .controller('ProductsController', ProductsController);
 
-  ProductsController.$inject = ['$scope', '$state', '$window', 'productResolve', 'Notification'];
+  ProductsController.$inject = ['$scope', '$state', '$window', 'productResolve', 'Notification', 'CategoriesService'];
 
-  function ProductsController($scope, $state, $window, product, Notification) {
+  function ProductsController($scope, $state, $window, product, Notification, CategoriesService) {
     var vm = this;
 
+    vm.categories = setCheckBoxItems();
     vm.product = product;
     vm.form = {};
     vm.save = save;
@@ -23,6 +24,27 @@
           Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Product deleted successfully!' });
         });
       }
+    }
+
+    // Make a list of custom objects that we can bind checkbox values
+    // and categories
+    function setCheckBoxItems() {
+      var allCategories = CategoriesService.query();
+      var dbSelectedCategories = product.productCategories;
+
+      var objectToBind = { isSelected: false, category: {} };
+      // TODO:
+      // foreach category, create an objectToBind.
+      // set isSelected and category properties,
+      // then return all in a list.
+      return dbSelectedCategories;
+    }
+
+    function getSelectedCategories() {
+      // TODO:
+      // iterate list of objectsToBind
+      // return only the categories, whose property
+      // isSelected is true;
     }
 
     // Save Product

@@ -36,7 +36,7 @@
               </div>
             </td>
               <td style="vertical-align:top">
-                <div class="form-group" show-errors style="width:50%;">
+                <div class="form-group" show-errors style="width:90%;">
                 <label class="control-label" for="productPrice">Price ($NZ)</label>
                 <input name="productPrice" type="text" ng-model="vm.product.productPrice" id="productPrice" class="form-control" required autofocus>
                 <div ng-messages="vm.form.productForm.productPrice.$error" role="alert">
@@ -45,15 +45,18 @@
               </div>
             </td>
             <td style="vertical-align:top">
-              <div class="form-group" show-errors style="width:80%;">
+              <div class="form-group" show-errors style="width:90%;">
                 <label class="control-label" for="productCategories">Categories</label>
-                <input name="productCategories" type="text" ng-model="vm.product.productCategories" id="productCategories" class="form-control" required autofocus>
-                <div ng-messages="vm.form.productForm.productCategories.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">Quantity is required.</p>
-                </div>
+                <ul style="list-style: none; padding-left:0">
+                  <li data-ng-repeat="cat in vm.categories" >
+                    <span><input name="productCategories" type="checkbox" ng-checked="false" id="productCategories"> </span><span data-ng-bind="cat.categoryName"></span>
+                  </li>
+                </ul>
               </div>
             </td>
-            <td><b>Image</b></td>
+            <td style="vertical-align:top">
+              <img ngf-src="vm.product.productImgUrl" class="img-thumbnail " style="max-height:150px; max-width: 150px" ngf-drop>
+            </td>
             <td style="vertical-align:top">
               <div class="form-group" show-errors style="width:50%;">
                 <label class="control-label" for="qtyInStock">Stock</label>

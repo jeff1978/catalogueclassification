@@ -6,11 +6,6 @@
       {{vm.category._id ? 'Edit Category' : 'New Category'}}
     </h1>
   </div>
-  <div class="pull-right">
-    <a ng-show="vm.category._id" class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
   <div class="col-md-12">
     <form name="vm.form.categoryForm" class="form-horizontal" ng-submit="vm.save(vm.form.categoryForm.$valid)" novalidate>
       <fieldset>
