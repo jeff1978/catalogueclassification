@@ -12,7 +12,6 @@
 
     ProductsService.query(function (data) {
       vm.products = data;
-      // vm.figureOutItemsToDisplay();
     });
 
     // Filter logic for pipe, not ideal - should filter vm.products for best practice.

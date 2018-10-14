@@ -15,8 +15,8 @@
     <form name="vm.form.categoryForm" class="form-horizontal" ng-submit="vm.save(vm.form.categoryForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label class="control-label" for="name">Category Name</label>
-          <input name="name" type="text" ng-model="vm.category.categoryName" id="name" class="form-control" placeholder="New Category Name" required autofocus>
+          <label class="control-label" for="categoryName">Category Name</label>
+          <input name="categoryName" type="text" ng-model="vm.category.categoryName" id="categoryName" class="form-control" placeholder="New Category Name" required autofocus>
           <div ng-messages="vm.form.categoryForm.categoryName.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Category name is required.</p>
           </div>
