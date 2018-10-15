@@ -16,6 +16,16 @@
     vm.save = save;
     vm.remove = remove;
 
+    // if product is new then set a new array for categories
+    if (!vm.product.productCategories) {
+      vm.product.productCategories = [];
+    }
+
+    // if product is new then set a default image placeholder
+    if (!vm.product.productImgUrl) {
+      vm.product.productImgUrl = '/modules/products/client/img/products/default.png';
+    }
+
     // Toggle selection for a given category by id
     vm.toggleSelection = function toggleSelection(categoryId) {
       var idx = vm.product.productCategories.indexOf(categoryId);
