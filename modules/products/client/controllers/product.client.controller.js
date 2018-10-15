@@ -10,11 +10,24 @@
   function ProductsController($scope, $state, $window, product, Notification, CategoriesService) {
     var vm = this;
 
-    vm.categories = setCheckBoxItems();
+    vm.allCategories = CategoriesService.query();
     vm.product = product;
     vm.form = {};
     vm.save = save;
     vm.remove = remove;
+
+    // Toggle selection for a given category by id
+    vm.toggleSelection = function toggleSelection(categoryId) {
+      var idx = vm.product.productCategories.indexOf(categoryId);
+
+      // Is currently selected
+      if (idx > -1) {
+        vm.product.productCategories.splice(idx, 1);
+        // Is newly selected
+      } else {
+        vm.product.productCategories.push(categoryId);
+      }
+    };
 
     // Remove existing Product
     function remove() {
@@ -24,27 +37,6 @@
           Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Product deleted successfully!' });
         });
       }
-    }
-
-    // Make a list of custom objects that we can bind checkbox values
-    // and categories
-    function setCheckBoxItems() {
-      var allCategories = CategoriesService.query();
-      var dbSelectedCategories = product.productCategories;
-
-      var objectToBind = { isSelected: false, category: {} };
-      // TODO:
-      // foreach category, create an objectToBind.
-      // set isSelected and category properties,
-      // then return all in a list.
-      return allCategories;
-    }
-
-    function getSelectedCategories() {
-      // TODO:
-      // iterate list of objectsToBind
-      // return only the categories, whose property
-      // isSelected is true;
     }
 
     // Save Product

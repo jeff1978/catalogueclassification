@@ -31,15 +31,9 @@ exports.create = function (req, res) {
 exports.read = function (req, res) {
   // convert mongoose document to JSON
   var product = req.product ? req.product.toJSON() : {};
-  Product.findById(product._id).populate({ path: 'productCategories' }).exec(function (err, product) {
-    if (err) {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(product);
-    }
-  });
+
+  res.json(product);
+
 };
 
 /**
@@ -87,7 +81,7 @@ exports.delete = function (req, res) {
  * List of Products
  */
 exports.list = function (req, res) {
-  Product.find().populate({ path: 'productCategories' }).exec(function (err, products) {
+  Product.find().exec(function (err, products) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)

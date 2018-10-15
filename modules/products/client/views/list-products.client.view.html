@@ -43,8 +43,8 @@
           </td>
           <td>
             <ul style="list-style: none; padding-left:0">
-              <li data-ng-repeat="category in product.productCategories" >
-                <span data-ng-bind="category.categoryName"></span>
+              <li data-ng-repeat="category in vm.allCategories" >
+                <span data-ng-if="product.productCategories.indexOf(category._id) > -1" data-ng-bind="category.categoryName"></span>
               </li>
             </ul>
           </td>
