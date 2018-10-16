@@ -91,7 +91,7 @@ exports.changeProfilePicture = function (req, res) {
   multerConfig.fileFilter = require(path.resolve('./config/lib/multer')).imageFileFilter;
 
   var upload = multer(multerConfig).single('newProfilePicture');
-
+  console.log(req);
   if (user) {
     existingImageUrl = user.profileImageURL;
     uploadImage()

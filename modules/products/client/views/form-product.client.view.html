@@ -6,7 +6,7 @@
       {{vm.product._id ? 'Edit Product' : 'New Product'}}
     </h1>
   </div>
-  <span ng-show="vm.product._id">{{vm.product._id}}</span>
+  <span ng-show="vm.product._id">{{vm.product._id}}</span> <span><h3>Step 1 of 2</h3></span>
   <div class="pull-right">
     <a ng-show="vm.product._id" class="btn btn-primary" ng-click="vm.remove()">
       <i class="glyphicon glyphicon-trash"></i>
@@ -18,7 +18,7 @@
         <table style="table-layout: fixed; width:100%">
           <tr>
             <td style="vertical-align:top">
-              <div class="form-group" show-errors style="width:90%;">
+              <div class="form-group" style="width:90%;" show-errors>
                 <label class="control-label" for="productName">Product Name</label>
                 <input name="productName" type="text" ng-model="vm.product.productName" id="productName" class="form-control" placeholder="New Product Name" required autofocus>
                 <div ng-messages="vm.form.productForm.productName.$error" role="alert">
@@ -27,7 +27,7 @@
               </div>
             </td>
             <td style="vertical-align:top">
-              <div class="form-group" show-errors style="width:90%;">
+              <div class="form-group" style="width:90%;" show-errors>
                 <label class="control-label" for="productDescription">Description</label>
                 <textarea rows="4" name="productDescription" data-ng-model="vm.product.productDescription" id="productDescription" class="form-control" placeholder="New description" required autofocus></textarea>
                 <div ng-messages="vm.form.productForm.productDescription.$error" role="alert">
@@ -36,7 +36,7 @@
               </div>
             </td>
               <td style="vertical-align:top">
-                <div class="form-group" show-errors style="width:90%;">
+                <div class="form-group" style="width:90%;" show-errors>
                 <label class="control-label" for="productPrice">Price ($NZ)</label>
                 <input name="productPrice" type="text" ng-model="vm.product.productPrice" id="productPrice" class="form-control" required autofocus>
                 <div ng-messages="vm.form.productForm.productPrice.$error" role="alert">
@@ -45,7 +45,7 @@
               </div>
             </td>
             <td style="vertical-align:top">
-              <div class="form-group" show-errors style="width:90%;">
+              <div class="form-group" style="width:90%;" show-errors>
                 <label class="control-label" for="productCategories">Categories</label>
                 <ul style="list-style: none; padding-left:0">
                   <li data-ng-repeat="cat in vm.allCategories" >
@@ -60,9 +60,6 @@
                   </li>
                 </ul>
               </div>
-            </td>
-            <td style="vertical-align:top">
-              <img ngf-src="vm.product.productImgUrl" class="img-thumbnail " style="max-height:150px; max-width: 150px" ngf-drop>
             </td>
             <td style="vertical-align:top">
               <div class="form-group" show-errors style="width:50%;">
