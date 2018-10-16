@@ -26,6 +26,10 @@
       vm.product.productImgUrl = '/modules/products/client/img/products/default.png';
     }
 
+    // TODO:
+    // I don't like this array approach, need to work out how to
+    // use mongoose to create models for binding.
+
     // Toggle selection for a given category by id
     vm.toggleSelection = function toggleSelection(categoryId) {
       var idx = vm.product.productCategories.indexOf(categoryId);
@@ -62,7 +66,7 @@
         .catch(errorCallback);
 
       function successCallback(res) {
-        $state.go('products.list'); // should we send the User to the list or the updated Product's view?
+        $state.go('products.photo', { productId: vm.product._id }); // send the user to the photo edit page
         Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Product saved successfully!' });
       }
 

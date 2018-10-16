@@ -29,6 +29,18 @@
           productResolve: newProduct
         }
       })
+      .state('products.photo', {
+        url: '/:productId/photo',
+        templateUrl: '/modules/products/client/views/form-photo.client.view.html',
+        controller: 'PhotosController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: '{{ productResolve.productName }}'
+        },
+        resolve: {
+          productResolve: getProduct
+        }
+      })
       .state('products.edit', {
         url: '/:productId/edit',
         templateUrl: '/modules/products/client/views/form-product.client.view.html',
@@ -40,7 +52,6 @@
         resolve: {
           productResolve: getProduct
         }
-
       });
   }
 
