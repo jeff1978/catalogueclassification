@@ -5,9 +5,11 @@
     .module('products')
     .controller('PhotosController', PhotosController);
 
-  PhotosController.$inject = ['$scope', 'productResolve', 'Notification', 'Upload', '$timeout'];
+  PhotosController.$inject = ['$scope', '$state', 'productResolve', 'Notification', 'Upload', '$timeout'];
 
-  function PhotosController($scope, product, Notification, Upload, $timeout) {
+  function PhotosController($scope, $state, product, Notification, Upload, $timeout) {
+
+
     var vm = this;
 
     vm.product = product;
@@ -16,7 +18,7 @@
     vm.upload = function (dataUrl) {
 
       Upload.upload({
-        url: '/api/products/photo',
+        url: '/api/products/photo/' + vm.product._id,
         data: {
           newProductPhoto: dataUrl
         }
@@ -33,15 +35,12 @@
 
     // Called after the user has successfully uploaded a new picture
     function onSuccessItem(response) {
+
+      $state.go('products.list'); // send the user to the list page.
+
       // Show success message
       Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Successfully changed product photo' });
 
-      // Populate product object
-      vm.product = response;
-
-      // Reset form
-      vm.fileSelected = false;
-      vm.progress = 0;
     }
 
     // Called after the user has failed to upload a new picture

@@ -19,7 +19,7 @@ module.exports = function (app) {
     .delete(products.delete);
 
   // new route for updating product photo
-  app.route('/api/products/photo').post(products.changeProductPhoto);
+  app.route('/api/products/photo/:productId').post(products.changeProductPhoto);
 
   // Finish by binding the product middleware
   app.param('productId', products.productByID);

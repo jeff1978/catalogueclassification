@@ -126,21 +126,11 @@ exports.productByID = function (req, res, next, id) {
  * Update product photo
  */
 exports.changeProductPhoto = function (req, res) {
-  // TODO
-  // BUGFIX
-  // product does not appear in req. Find out how to
-  // get access to product.
 
   var product = req.product;
   var existingImageUrl;
-  var multerConfig;
 
-  multerConfig = { dest: '/uploads' };
-
-  // Filtering to upload only images
-  multerConfig.fileFilter = require(path.resolve('./config/lib/multer')).imageFileFilter;
-
-  var upload = multer(multerConfig).single('newProductPhoto');
+  var upload = multer({ dest: 'modules/products/client/img/products/', fileFilter: require(path.resolve('./config/lib/multer')).imageFileFilter }).single('newProductPhoto');
 
   if (product) {
 
@@ -174,6 +164,9 @@ exports.changeProductPhoto = function (req, res) {
   }
   function updateProduct() {
     return new Promise(function (resolve, reject) {
+
+      console.log(req.file);
+
       product.productImgUrl =
         '/' + req.file.path;
       product.save(function (err, theproduct) {
