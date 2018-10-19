@@ -1,7 +1,7 @@
 ## A Mean.js implementation of a web app that stores/edits products and categories.
 <h3>Install Requirements:</h3>
 <br>You will need to have the following installed on your computer:
-<br>- Node
+<br>- Node 8
 <br>- MongoDB: This should be running and listening on default port 27017
 
 <h3>To Run App:</h3>
